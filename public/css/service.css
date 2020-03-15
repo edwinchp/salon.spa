@@ -1,0 +1,11 @@
+.service-card{
+    width: 100%;
+    min-height: 300px;
+    margin: auto;
+    box-shadow: 0px 8px 40px -20px rgba(22, 16, 16);
+    background-color: #FFF;
+    border-radius: 12px;
+    max-width: 900px;
+    position: relative;
+    padding: 2em;
+  }
