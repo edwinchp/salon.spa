@@ -2,21 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Service;
 use Illuminate\Http\Request;
 
-class ServiceController extends Controller
+class Full_text_search_Controller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $services = Service::where('isOffer', '!=', 'Y')->orderBy('name', 'asc')->get();
-        
-        return view('service.index', compact('services'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        //
     }
 
     /**
@@ -37,16 +34,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        $service = new Service([
-            'name' => $request->get('Nombre'),
-            'price' => $request->get('Precio') != null ? $request->get('Precio') : 0,
-            'description' => $request->get('Descripcion'),
-            'category' => $request->get('Categoria')
-        ]);
-
-        $service->save();
-        return redirect('/servicios');
-        //return $service->id;
+        //
     }
 
     /**
@@ -57,8 +45,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = Service::findOrFail($id);
-        return view('service.show', compact('service'));
+        //
     }
 
     /**
@@ -69,8 +56,7 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
-        return view('service.edit', compact('service'));
+        //
     }
 
     /**
@@ -82,14 +68,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $service = Service::findOrFail($id);
-        $service->name = $request->get('Nombre'); 
-        $service->price = $request->get('Precio');
-        $service->description = $request->get('Descripcion');
-        $service->category = $request->get('Categoria');
-
-        $service->save();
-        return redirect('/servicios');
+        //
     }
 
     /**
@@ -100,8 +79,6 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::findOrFail($id);
-        $service->delete();
-        return redirect('/servicios');
+        //
     }
 }

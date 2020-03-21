@@ -5,16 +5,23 @@
 <div class="row">
     <div class="col">
     <h1>Servicios</h1>
+    <div class="row">
+    <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="full_text_search">
+    @csrf
+    <button class="btn btn-success" type="button" id="search">Search</button>
+    </div>
     </div>
     <div class="col col-sm-2">
     <a href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a>
     </div>
   </div>
+<div class="table-responsive">
 
-<table class="table table-hover">
+
+<table class="table table-hover ">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Código</th>
+            <th scope="col">#</th>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
             <th scope="col">Categoría</th>
@@ -22,10 +29,17 @@
         </tr>
     </thead>
     <tbody>
+        @php
+        $num = 1;
+        @endphp
         @foreach($services as $service)
         <tr>
-            <th scope="row">{{$service->id}}</th>
-            <td><a href="/servicios/{{$service->id}}">{{$service->name}}</a></td>
+            <th scope="row">{{$num++}}</th>
+            <td><a href="/servicios/{{$service->id}}" data-toggle="tooltip" data-placement="top" title="{{$service->name}}">{{substr($service->name, 0, 30)}}
+            @if(strlen($service->name) > 30)
+            {{"..."}}
+            @endif
+            </a></td>
             <td>${{$service->price}}</td>
             <td>{{$service->category}}</td>
             <td>
@@ -35,11 +49,7 @@
         @endforeach
     </tbody>
 </table>
-
-{{ $services->links() }}
-
-
-
+</div>
 
 
 @endsection('content')
@@ -74,4 +84,8 @@
         i++;
         }
     }
+
+    $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 </script>

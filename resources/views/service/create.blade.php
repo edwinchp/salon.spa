@@ -12,7 +12,7 @@
                 {!! Form::text('Nombre', null, ['class' => 'form-control', 'required']) !!}
                 <br>
                 {!! Form::label('Precio') !!}
-                {!! Form::text('Precio', null, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399']) !!}
+                {!! Form::text('Precio', null, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399', 'autocomplete' => 'off']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
                 {!! Form::select('Categoria', ['CORTE' => 'Corte'], 'CORTE', ['class' => 'form-control'])!!}

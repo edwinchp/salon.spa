@@ -12,7 +12,7 @@
                 {!! Form::text('Nombre', $service->name, ['class' => 'form-control', 'required']) !!}
                 <br>
                 {!! Form::label('Precio') !!}
-                {!! Form::text('Precio', $service->price, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399']) !!}
+                {!! Form::text('Precio', $service->price, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399', 'autocomplete' => 'off']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
                 {!! Form::select('Categoria', ['MASAJE'=>'Masaje', 'CORTE' => 'Corte'], $service->category, ['class' => 'form-control'])!!}
