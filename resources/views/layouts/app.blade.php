@@ -48,7 +48,7 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-10 offset-1">
+                <div class="col-8 offset-2">
                     <main class="py-4">
                         @yield('content')
                     </main>

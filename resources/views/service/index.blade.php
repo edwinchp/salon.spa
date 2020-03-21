@@ -2,90 +2,102 @@
 
 @section('content')
 
-<div class="row">
-    <div class="col">
-    <h1>Servicios</h1>
-    <div class="row">
-    <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="full_text_search">
-    @csrf
-    <button class="btn btn-success" type="button" id="search">Search</button>
-    </div>
-    </div>
-    <div class="col col-sm-2">
-    <a href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a>
-    </div>
-  </div>
-<div class="table-responsive">
 
-
-<table class="table table-hover ">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Opciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @php
-        $num = 1;
-        @endphp
-        @foreach($services as $service)
-        <tr>
-            <th scope="row">{{$num++}}</th>
-            <td><a href="/servicios/{{$service->id}}" data-toggle="tooltip" data-placement="top" title="{{$service->name}}">{{substr($service->name, 0, 30)}}
-            @if(strlen($service->name) > 30)
-            {{"..."}}
-            @endif
-            </a></td>
-            <td>${{$service->price}}</td>
-            <td>{{$service->category}}</td>
-            <td>
-            <button type="button" class="btn btn-secondary btn-sm" type="button" onclick="newService('{{$service->id}}', '{{$service->name}}', '{{$service->price}}')"><i class="fas fa-cart-plus"></i></button>
-        </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+<div id="side_bar" class="clearfix">
+    <h2 style="float: left;">Servicios</h2>
+    <a style="float: right; position: relative; top: 10px; right: 60px;" href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a>
 </div>
+
+<div class="table-responsive">
+    <table class="table table-hover compact-table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" style="width: 10%">#</th>
+                <th scope="col" style="width: 40%">Nombre</th>
+                <th scope="col" style="width: 10%">Precio</th>
+                <th scope="col" style="width: 20%">Categoría</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+            $num = 1;
+            @endphp
+            @foreach($services as $service)
+            <tr>
+                <th scope="row">{{$num++}}</th>
+                <td><a href="/servicios/{{$service->id}}" data-toggle="tooltip" data-placement="top" title="{{$service->name}}">{{substr($service->name, 0, 30)}}
+                        @if(strlen($service->name) > 30)
+                        {{"..."}}
+                        @endif
+                    </a></td>
+                <td>${{$service->price}}</td>
+                <td>{{$service->category}}</td>
+                <td>
+                    <button type="button" class="btn btn-secondary btn-sm" type="button" onclick="newService('{{$service->id}}', '{{$service->name}}', '{{$service->price}}')"><i class="fas fa-cart-plus"></i></button>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
 
 @endsection('content')
 
-{!! Form::open(['method' => 'POST', 'action' => 'SaleController@store']) !!}
-@csrf
-<div class="form-group" id="sell-box">
-<div id="sell-services">
+
+<div class="card" style="width: 15rem;" id="sell-box">
+    <div class="card-body">
+        <h5 class="card-title">Carrito</h5>
+        <p class="card-text">Haz click en el botón <i class="fas fa-cart-plus"></i> para comenzar a vender.</p>
+        <div class="row">
+
+            {!! Form::open(['method' => 'POST', 'action' => 'SaleController@store']) !!}
+            @csrf
+            <div class="form-group">
+                <div id="sell-services">
+                </div>
+            </div>
+            {!! Form::submit('Vender', ['class' => 'btn btn-primary']) !!}
+            {!! Form::close()!!}
+
+        </div>
+
+    </div>
 </div>
-</div>
-{!! Form::submit('Crear') !!}
-{!! Form::close()!!}
 
 <style>
-#sell-box{
-    background-color:#ddd;
-    position: fixed;
-    padding: 2em;
-    left: 50%;
-    top: 0%;
-    transform: translateX(-50%);
-}
+    #sell-box {
+        position: fixed;
+        padding: 1em;
+        left: 90%;
+        top: 10%;
+        transform: translateX(-50%);
+       
+    }
 
+    .compact-table {
+        border: 1px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+
+    }
 </style>
 
 
 <script>
     var i = 1;
-    function newService(id, name, price){
-        if(i<6){
-            $("#sell-services").append('<input type="text" name="name_' + i + '" class="form-control" value="'+name+'" id="sale_' + i + '" /> <input type="text" name="price_' + i + '" class="form-control" value="'+price+'" id="price_' + i + '" />');
-        i++;
+
+    function newService(id, name, price) {
+        if (i < 6) {
+            $("#sell-services").append('<input readonly type="text" name="name_' + i + '" class="list-group-item" value="' + name + '" id="sale_' + i + '" /> <input hidden type="text" name="price_' + i + '" class="form-control" value="' + price + '" id="price_' + i + '" />');
+            i++;
         }
     }
 
-    $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
