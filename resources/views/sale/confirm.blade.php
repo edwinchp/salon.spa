@@ -30,9 +30,9 @@
                         {!! Form::text('price_3', $sale->price_3, ['class' => 'form-control form-control-sm', 'id' => 'price_3']) !!}<br>
                         {!! Form::text('price_4', $sale->price_4, ['class' => 'form-control form-control-sm', 'id' => 'price_4']) !!}<br>
                         {!! Form::text('price_5', $sale->price_5, ['class' => 'form-control form-control-sm', 'id' => 'price_5']) !!}<br>
-                        {!! Form::text('adicional', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 399', 'id' => 'adicional', 'autocomplete' => 'off']) !!} <br>
-                        {!! Form::text('recibo', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 200', 'id' => 'recibo', 'autocomplete' => 'off']) !!} <br>
-                        {!! Form::text('Precio', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 399', 'id' => 'cambio', 'autocomplete' => 'off', 'readonly']) !!} <br>
+                        {!! Form::text('price_extra', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 399', 'id' => 'adicional', 'autocomplete' => 'off']) !!} <br>
+                        {!! Form::text('payment', null, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 200', 'id' => 'recibo', 'autocomplete' => 'off']) !!} <br>
+                        {!! Form::text('change', 0, ['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 399', 'id' => 'cambio', 'autocomplete' => 'off', 'readonly']) !!} <br>
                         {!! Form::text('total', null ,['class' => 'form-control form-control-sm', 'placeholder' => 'Ejemplo: 399', 'id' => 'total', 'autocomplete' => 'off', 'readonly']) !!} <br>
                         <br><br>
                     {!! Form::submit('Confirmar', ['class' => 'btn btn-success']) !!}

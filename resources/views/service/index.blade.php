@@ -2,10 +2,9 @@
 
 @section('content')
 
-
 <div id="side_bar" class="clearfix">
     <h2 style="float: left;">Servicios</h2>
-    <a style="float: right; position: relative; top: 10px; right: 60px;" href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a>
+    <a style="float: right; position: relative; top: 10px; right: 60px;" href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a><br><br><br>
 </div>
 
 <div class="table-responsive">
@@ -26,8 +25,8 @@
             @foreach($services as $service)
             <tr>
                 <th scope="row">{{$num++}}</th>
-                <td><a href="/servicios/{{$service->id}}" data-toggle="tooltip" data-placement="top" title="{{$service->name}}">{{substr($service->name, 0, 30)}}
-                        @if(strlen($service->name) > 30)
+                <td><a href="/servicios/{{$service->id}}" data-toggle="tooltip" data-placement="top" title="{{$service->name}}">{{substr($service->name, 0, 25)}}
+                        @if(strlen($service->name) > 25)
                         {{"..."}}
                         @endif
                     </a></td>

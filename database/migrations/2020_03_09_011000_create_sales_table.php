@@ -27,6 +27,9 @@ class CreateSalesTable extends Migration
             $table->double('price_5')->nullable()->default(0);
             $table->string('service_extra')->nullable();
             $table->double('price_extra')->nullable()->default(0);
+            $table->double('total')->nullable()->default(0);
+            $table->double('payment')->nullable()->default(0);
+            $table->double('change')->nullable()->default(0);
             $table->timestamps();
         });
     }

@@ -28,6 +28,7 @@ Route::post('/servicios/create', 'ServiceController@store');
 Route::post('/sales', 'SaleController@confirmSale');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@storage')->name('cart.store');
+Route::resource('/ventas', 'SaleController');
 
 
 Route::get('/sales', function(){

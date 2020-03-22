@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Sale;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -14,7 +17,15 @@ class SaleController extends Controller
      */
     public function index()
     {
-        //
+        Carbon::setWeekStartsAt(Carbon::SUNDAY);
+Carbon::setWeekEndsAt(Carbon::SATURDAY);
+        $sales = DB::table('sales')->orderByDesc('created_at')->paginate(8);
+        $total = DB::table('sales')->sum('total');
+        $count = DB::table('sales')->count();
+        $last_week_sum = DB::table('sales')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('total');
+        $last_week_count = DB::table('sales')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        //dd($lastWeek);
+        return view('sale.index', compact('sales', 'total', 'count', 'last_week_sum', 'last_week_count'));
     }
 
     /**
@@ -69,6 +80,14 @@ class SaleController extends Controller
         $sale->price_4 = $request->get('price_4');
         $sale->price_5 = $request->get('price_5');
         $sale->price_extra = $request->get('price_extra') != null ? $request->get('price_extra') : 0;
+        $sale->total = $request->get('total');
+        $sale->payment = $request->get('payment');
+        $sale->change = $request->get('change');
+
+
+
+        
+           
 
         $sale->save();
         return redirect('/servicios');
@@ -82,7 +101,9 @@ class SaleController extends Controller
      */
     public function show($id)
     {
-       
+       $sale = Sale::findOrFail($id);
+
+       return view('sale.show', compact('sale'));
 
     }
 
@@ -117,6 +138,9 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale = Sale::findOrFail($id);
+        $sale->delete();
+
+        return redirect('/ventas');
     }
 }

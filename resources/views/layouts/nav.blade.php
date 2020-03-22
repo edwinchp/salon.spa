@@ -5,13 +5,13 @@
     <!-- Links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="/servicios">Servicios</a>
+        <a class="nav-link {{Request::is('servicios') ? 'active' : ''}}" href="/servicios">Servicios</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/ofertas">Ofertas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ventas">Ventas</a>
+        <a class="nav-link {{Request::is('ventas') ? 'active' : ''}}" href="/ventas">Ventas</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/inventario">Inventario</a>
