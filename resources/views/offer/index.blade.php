@@ -3,8 +3,8 @@
 @section('content')
 
 <div id="side_bar" class="clearfix">
-    <h2 style="float: left;">Servicios</h2>
-    <a style="float: left; position: relative; top: 3px; right: -20px;" href="servicios/create"><button type="button" class="btn btn-success btn-sm">Nuevo servicio</button></a><br><br><br>
+    <h2 style="float: left;">Promociones</h2>
+    <a style="float: left; position: relative; top: 3px; right: -20px;" href="promociones/create"><button type="button" class="btn btn-success btn-sm">Nueva promoción</button></a><br><br><br>
 </div>
 
 <div class="table-responsive">

@@ -4,12 +4,11 @@
 
 <div id="side_bar" class="clearfix">
     <h2 style="float: left;">Ventas</h2>
-    <a style="float: right; position: relative; top: 10px; right: 60px;" href="servicios"><button type="button" class="btn btn-success btn-sm">Nueva venta</button></a>
+    <a style="float: left; position: relative; top: 3px; right: -20px;" href="servicios"><button type="button" class="btn btn-success btn-sm">Nueva venta</button></a><br><br><br>
 </div>
 
 
 <div class="row">
-
 <div class="col-xl-3 col-md-6 mb-4">
     <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
@@ -73,11 +72,9 @@
         </div>
     </div>
 </div>
-
-
 </div>
 
-
+<br>
 
 
 

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
-            <h1>Crear nuevo servicio</h1>
+            <h1>Crear nueva promoción</h1>
             <div class="service-card">
                 {!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store']) !!}
                 @csrf
@@ -15,8 +15,8 @@
                 {!! Form::text('Precio', null, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399', 'autocomplete' => 'off']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
-                {!! Form::select('Categoria', ['CORTE' => 'Corte'], 'CORTE', ['class' => 'form-control'])!!}
-                {!! Form::text('offer', 'N', ['class' => 'form-control', 'hidden']) !!}
+                {!! Form::select('Categoria', ['CORTE' => 'Corte'], 'CORTE', ['class' => 'form-control'])!!}            
+                {!! Form::text('offer', 'Y', ['class' => 'form-control', 'hidden']) !!}
                 <br>
                 {!! Form::label('Descripción') !!}
                 {!! Form::textarea('Descripcion', null, ['class' => 'form-control', 'rows'=>'2']) !!}

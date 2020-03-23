@@ -19,6 +19,13 @@ class ServiceController extends Controller
         return view('service.index', compact('services'));
     }
 
+    public function indexOffer()
+    {
+        $services = Service::where('isOffer', '!=', 'N')->orderBy('name', 'asc')->get();
+        
+        return view('offer.index', compact('services'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +34,11 @@ class ServiceController extends Controller
     public function create()
     {
         return view('service.create');
+    }
+
+    public function createOffer()
+    {
+        return view('offer.create');
     }
 
     /**
@@ -41,6 +53,7 @@ class ServiceController extends Controller
             'name' => $request->get('Nombre'),
             'price' => $request->get('Precio') != null ? $request->get('Precio') : 0,
             'description' => $request->get('Descripcion'),
+            'isOffer' => $request->get('offer'),
             'category' => $request->get('Categoria')
         ]);
 

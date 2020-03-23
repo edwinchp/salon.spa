@@ -84,13 +84,8 @@ Carbon::setWeekEndsAt(Carbon::SATURDAY);
         $sale->payment = $request->get('payment');
         $sale->change = $request->get('change');
 
-
-
-        
-           
-
         $sale->save();
-        return redirect('/servicios');
+        return redirect('/ventas');
     }
 
     /**

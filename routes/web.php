@@ -29,6 +29,11 @@ Route::post('/sales', 'SaleController@confirmSale');
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@storage')->name('cart.store');
 Route::resource('/ventas', 'SaleController');
+Route::get('/promociones', 'ServiceController@indexOffer');
+Route::get('/promociones/create', 'ServiceController@createOffer');
+//Route::get('/promociones/$id', 'ServiceController@createOffer');
+//Route::post('/promociones/create', 'ServiceController@store');
+
 
 
 Route::get('/sales', function(){
