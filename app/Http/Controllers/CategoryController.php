@@ -42,8 +42,8 @@ class CategoryController extends Controller
         $category->description = $request->get('Descripcion');
 
         $category->save();
-        session()->flash('success', 'Agregado exitosamente');
-        return redirect('/categorias');
+       session()->flash('success', 'Agregado exitosamente');
+       return redirect('/categorias');
 
     }
 
