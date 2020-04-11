@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServiceController extends Controller
 {
@@ -15,14 +17,22 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::where('isOffer', '!=', 'Y')->orderBy('name', 'asc')->get();
-        
+
+        $links = session('links');
+        $currentLink = request()->path(); // Getting current URI like 'category/books/'
+        array_unshift($links, $currentLink); // Putting it in the beginning of links array
+        session(['links' => $links]); // Saving links array to the session
         return view('service.index', compact('services'));
     }
 
     public function indexOffer()
     {
         $services = Service::where('isOffer', '!=', 'N')->orderBy('name', 'asc')->get();
-        
+        $links = session('links');
+        $currentLink = request()->path(); // Getting current URI like 'category/books/'
+        array_unshift($links, $currentLink); // Putting it in the beginning of links array
+        session(['links' => $links]); // Saving links array to the session
+
         return view('offer.index', compact('services'));
     }
 
@@ -33,12 +43,16 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('service.create');
+        $categories = Category::getCategoriesList();
+        //echo $categories;
+        //return dd($categories);
+        return view('service.create', compact('categories'));
     }
 
     public function createOffer()
     {
-        return view('offer.create');
+        $categories = Category::getCategoriesList();
+        return view('offer.create', compact('categories'));
     }
 
     /**
@@ -49,17 +63,22 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        $categories = Category::getCategoriesList();
+        $index = $request->get('Categoria');
         $service = new Service([
             'name' => $request->get('Nombre'),
             'price' => $request->get('Precio') != null ? $request->get('Precio') : 0,
             'description' => $request->get('Descripcion'),
             'isOffer' => $request->get('offer'),
-            'category' => $request->get('Categoria')
+            'category' => $categories[$index]
         ]);
 
         $service->save();
-        return redirect('/servicios');
+
+        return redirect(session('links')[0]); // Will redirect 2 links back
+
         //return $service->id;
+        //return dd($categories[$index]);
     }
 
     /**
@@ -82,8 +101,9 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::getCategoriesList();
         $service = Service::findOrFail($id);
-        return view('service.edit', compact('service'));
+        return view('service.edit', compact('service', 'categories'));
     }
 
     /**
@@ -95,11 +115,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $categories = Category::getCategoriesList();
+        $index = $request->get('Categoria');
         $service = Service::findOrFail($id);
-        $service->name = $request->get('Nombre'); 
+        $service->name = $request->get('Nombre');
         $service->price = $request->get('Precio');
         $service->description = $request->get('Descripcion');
-        $service->category = $request->get('Categoria');
+        $service->category = $categories[$index];
 
         $service->save();
         return redirect('/servicios');

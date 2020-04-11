@@ -18,8 +18,8 @@ class SaleController extends Controller
     public function index()
     {
         Carbon::setWeekStartsAt(Carbon::SUNDAY);
-Carbon::setWeekEndsAt(Carbon::SATURDAY);
-        $sales = DB::table('sales')->orderByDesc('created_at')->paginate(8);
+        Carbon::setWeekEndsAt(Carbon::SATURDAY);
+        $sales = DB::table('sales')->orderByDesc('created_at')->paginate(15);
         $total = DB::table('sales')->sum('total');
         $count = DB::table('sales')->count();
         $last_week_sum = DB::table('sales')->whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->sum('total');
@@ -65,7 +65,8 @@ Carbon::setWeekEndsAt(Carbon::SATURDAY);
         return view('sale.confirm', compact('sale'));
     }
 
-    public function confirmSale(Request $request){
+    public function confirmSale(Request $request)
+    {
         $sale = new Sale();
         $sale->service_1 = $request->get('name_1');
         $sale->service_2 = $request->get('name_2');
@@ -96,10 +97,9 @@ Carbon::setWeekEndsAt(Carbon::SATURDAY);
      */
     public function show($id)
     {
-       $sale = Sale::findOrFail($id);
+        $sale = Sale::findOrFail($id);
 
-       return view('sale.show', compact('sale'));
-
+        return view('sale.show', compact('sale'));
     }
 
     /**

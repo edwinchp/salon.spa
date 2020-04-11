@@ -15,7 +15,7 @@
                 {!! Form::text('Precio', $service->price, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399', 'autocomplete' => 'off']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
-                {!! Form::select('Categoria', $categories, $service->category, ['class' => 'form-control'])!!}
+                {!! Form::select('Categoria', ['MASAJE'=>'Masaje', 'CORTE' => 'Corte'], $service->category, ['class' => 'form-control'])!!}
                 <br>
                 {!! Form::label('Descripción') !!}
                 {!! Form::textarea('Descripcion', $service->description, ['class' => 'form-control', 'rows'=>'2']) !!}
