@@ -31,7 +31,7 @@
                 {!! Form::text('Precio', '$' .$service->price, ['class' => 'form-control', 'disabled', 'placeholder' => 'Ejemplo: 399']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
-                {!! Form::text('Categoria', $service->category, ['class' => 'form-control', 'disabled'])!!}
+                {!! Form::select('Categoria', ['MASAJE'=>'Masaje', 'CORTE' => 'Corte'], $service->category, ['class' => 'form-control', 'disabled'])!!}
                 <br>
                 {!! Form::label('Descripción') !!}
                 {!! Form::textarea('Descripcion', $service->description, ['class' => 'form-control', 'rows'=>'2', 'disabled']) !!}

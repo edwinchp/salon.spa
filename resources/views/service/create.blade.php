@@ -15,7 +15,7 @@
                 {!! Form::text('Precio', null, ['class' => 'form-control', 'placeholder' => 'Ejemplo: 399', 'autocomplete' => 'off']) !!}
                 <br>
                 {!! Form::label('Categoria') !!}
-                {!! Form::select('Categoria', ['CORTE' => 'Corte'], 'CORTE', ['class' => 'form-control'])!!}
+                {!! Form::select('Categoria', $categories, null, ['class' => 'form-control'])!!}
                 {!! Form::text('offer', 'N', ['class' => 'form-control', 'hidden']) !!}
                 <br>
                 {!! Form::label('Descripción') !!}
