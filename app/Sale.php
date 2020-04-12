@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Exports;
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+//use Maat
 
 class Sale extends Model
 {

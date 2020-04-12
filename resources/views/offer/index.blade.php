@@ -31,7 +31,11 @@
                         @endif
                     </a></td>
                 <td>${{$service->price}}</td>
-                <td>{{$service->category}}</td>
+                <td>{{substr($service->category, 0, 25)}}
+                    @if(strlen($service->category) > 25)
+                    {{"..."}}
+                    @endif
+                </td>
                 <td>
                     <button type="button" class="btn btn-secondary btn-sm" type="button" onclick="newService('{{$service->id}}', '{{$service->name}}', '{{$service->price}}')"><i class="fas fa-cart-plus"></i></button>
                 </td>

@@ -13,9 +13,18 @@
     <div class="col-4 pt-3 pd-3">
             <div class="card" style="width: 14rem;">
                 <div class="card-body">
-                    <h5 class="card-title">{{$cat->title}}</h5>
+                    <h5 class="card-title">{{substr($cat->title, 0, 38)}}
+                        @if(strlen($cat->title) > 40)
+                        {{"..."}}
+                        @endif
+                    </h5>
                     <div style="height:7rem;">
-                        <p class="card-text">{{$cat->description}}</p>
+                        <p class="card-text">{{substr($cat->description, 0, 80)}}
+                        @if(strlen($cat->description) > 80)
+                        {{"..."}}
+                        @endif
+                        </p>
+                        
                     </div>
                     
                     <a href="categorias/{{$cat->id}}" class="card-link">Ver más</a>

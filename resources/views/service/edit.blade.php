@@ -7,7 +7,7 @@
             <h1>Editar</h1>
             <div class="service-card">
                 {!! Form::model($service, ['method' => 'PATCH', 'action' => ['ServiceController@update', $service->id]]) !!}
-                @csrf
+                
                 {!! Form::label('Nombre') !!}
                 {!! Form::text('Nombre', $service->name, ['class' => 'form-control', 'required']) !!}
                 <br>
