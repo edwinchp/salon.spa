@@ -4,7 +4,7 @@
 
 <div id="side_bar" class="clearfix">
     <h2 style="float: left;">Ventas</h2>
-    <a style="float: left; position: relative; top: 3px; right: -20px;" href="servicios"><button type="button" class="btn btn-success btn-sm">Nueva venta</button></a><br><br><br>
+    <a style="float: left; position: relative; top: 3px; right: -20px;" href="/exportar"><button type="button" class="btn btn-success btn-sm">Exportar</button></a><br><br><br>
 </div>
 
 

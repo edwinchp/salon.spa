@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use Illuminate\Routing\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,7 @@ Route::get('/promociones/create', 'ServiceController@createOffer');
 Route::resource('categorias', 'CategoryController');
 //Route::get('/promociones/$id', 'ServiceController@createOffer');
 //Route::post('/promociones/create', 'ServiceController@store');
+Route::get('exportar','SaleController@export')->name('exportar');
 
 
 

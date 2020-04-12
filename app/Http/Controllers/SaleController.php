@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SalesExport;
 use App\Sale;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 //use App\Exports
 
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SaleController extends Controller
 {
@@ -139,5 +141,11 @@ class SaleController extends Controller
         $sale->delete();
         session()->flash('success', 'Venta eliminada.');
         return redirect('/ventas');
+    }
+
+    public function export(){
+        redirect()->back();
+        //return Excel::download(new SalesExport(), 'todas_ventas.xlsx');
+        return Excel::download(new SalesExport(), 'todas_ventas.xlsx');
     }
 }

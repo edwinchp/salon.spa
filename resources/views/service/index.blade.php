@@ -57,7 +57,6 @@
         <div class="row">
 
             {!! Form::open(['method' => 'POST', 'action' => 'SaleController@store']) !!}
-            @csrf
             <div class="form-group">
                 <div id="sell-services">
                 </div>

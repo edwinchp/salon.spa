@@ -14,7 +14,7 @@ class CreateFullTextSearchesTable extends Migration
     public function up()
     {
         Schema::create('full_text_searches', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->timestamps();
         });
     }
