@@ -7,7 +7,6 @@
             <h1>Crear nueva categoría</h1>
             <div class="service-card">
                 {!! Form::open(['method' => 'POST', 'action' => 'CategoryController@store']) !!}
-                @csrf
                 {!! Form::label('Título') !!}
                 {!! Form::text('Titulo', null, ['class' => 'form-control', 'required']) !!}
                 <br>

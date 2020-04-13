@@ -7,7 +7,6 @@
             <h1>Crear nuevo servicio</h1>
             <div class="service-card">
                 {!! Form::open(['method' => 'POST', 'action' => 'ServiceController@store']) !!}
-                @csrf
                 {!! Form::label('Nombre') !!}
                 {!! Form::text('Nombre', null, ['class' => 'form-control', 'required']) !!}
                 <br>

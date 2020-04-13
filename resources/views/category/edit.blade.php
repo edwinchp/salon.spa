@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8">
-            <h1>Editar</h1>
+            <br><br>
             <div class="service-card">
                 {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update', $category->id]]) !!}
                 {!! Form::label('Título') !!}

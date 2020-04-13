@@ -7,7 +7,6 @@
             <h1>Confirmar compra</h1>
             <div class="service-card confirm-sell">
                 {!! Form::open(['method' => 'POST', 'action' => 'SaleController@confirmSale']) !!}
-                @csrf
                 <div class="row justify-content-center">
                     <div class="col-6 ">
                         <h3>Servicio</h3>
