@@ -73,8 +73,6 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-
-                @csrf
                 {!! Form::model($sale, ['method' => 'DELETE', 'action' => ['SaleController@destroy', $sale->id]]) !!}
                 {!! Form::submit('Eliminar', ['class' => 'btn btn-danger'])!!}
                 {!! Form::close() !!}
