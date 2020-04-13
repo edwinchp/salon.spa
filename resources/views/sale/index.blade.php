@@ -115,7 +115,7 @@
             @endforeach
         </tbody>
     </table>
-    {{ $sales->links() }}
+    {{ $sales->links("pagination::bootstrap-4") }}
 
 </div>
 @endsection
