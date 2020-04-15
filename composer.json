@@ -11,13 +11,14 @@
         "php": "^7.2.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "guzzlehttp/guzzle": "^6.3",
         "gloudemans/shoppingcart": "^2.6",
+        "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.0",
-        "nicolaslopezj/searchable": "^1.12",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "nicolaslopezj/searchable": "^1.12"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

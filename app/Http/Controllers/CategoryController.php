@@ -41,6 +41,7 @@ class CategoryController extends Controller
         $category->title = $request->get('Titulo');
         $category->description = $request->get('Descripcion');
 
+        $category->path = $request->Imagen->store('uploads', 'public');
         $category->save();
        session()->flash('success', 'Agregado exitosamente');
        return redirect('/categorias');

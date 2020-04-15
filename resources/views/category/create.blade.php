@@ -6,12 +6,15 @@
         <div class="col-8">
             <h1>Crear nueva categoría</h1>
             <div class="service-card">
-                {!! Form::open(['method' => 'POST', 'action' => 'CategoryController@store']) !!}
+                {!! Form::open(['method' => 'POST', 'action' => 'CategoryController@store', 'enctype' => 'multipart/form-data']) !!}
                 {!! Form::label('Título') !!}
                 {!! Form::text('Titulo', null, ['class' => 'form-control', 'required']) !!}
                 <br>
                 {!! Form::label('Descripción') !!}
                 {!! Form::textarea('Descripcion', null, ['class' => 'form-control', 'rows'=>'2']) !!}
+                <br>
+                {!! Form::label('Imagen') !!}
+                {!! Form::file('Imagen') !!}
                 <br><br>
                 {!! Form::submit('Crear', ['class' => 'btn btn-success']) !!}
                 <a href="/categorias"><button type="button" class="btn btn-secondary">Cancelar</button>
