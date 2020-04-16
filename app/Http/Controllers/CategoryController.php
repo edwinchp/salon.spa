@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -41,11 +42,14 @@ class CategoryController extends Controller
         $category->title = $request->get('Titulo');
         $category->description = $request->get('Descripcion');
 
-        $category->path = $request->Imagen->store('uploads', 'public');
+        if ($request->Imagen != null) {
+            $category->path = $request->Imagen->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$category->path}"))->fit(286, 180);
+            $image->save();
+        }
         $category->save();
-       session()->flash('success', 'Agregado exitosamente');
-       return redirect('/categorias');
-
+        session()->flash('success', 'Agregado exitosamente');
+        return redirect('/categorias');
     }
 
     /**
@@ -83,6 +87,11 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->title = $request->get('Titulo');
         $category->description = $request->get('Descripcion');
+        if ($request->Imagen != null) {
+            $category->path = $request->Imagen->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$category->path}"))->fit(286, 180);
+            $image->save();
+        }
         $category->save();
         session()->flash('success', 'Actualizado correctamente');
         return redirect('/categorias');

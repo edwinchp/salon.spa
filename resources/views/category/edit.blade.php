@@ -6,13 +6,18 @@
         <div class="col-8">
             <br><br>
             <div class="service-card">
-                {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update', $category->id]]) !!}
+                {!! Form::model($category, ['method' => 'PATCH', 'action' => ['CategoryController@update', $category->id], 'enctype' => 'multipart/form-data']) !!}
                 {!! Form::label('Título') !!}
                 {!! Form::text('Titulo', $category->title, ['class' => 'form-control', 'required']) !!}
                 <br>
-                <br>
                 {!! Form::label('Descripción') !!}
                 {!! Form::textarea('Descripcion', $category->description, ['class' => 'form-control', 'rows'=>'2']) !!}
+                <br>
+                <img src="{{URL::to('/')}}/storage/{{$category->path}}" alt="" class="img-thumbnail" width="200px">
+                <br>
+                <br>
+                {!! Form::label('Imagen') !!}
+                {!! Form::file('Imagen')!!}
                 <br><br>
                 {!! Form::submit('Guardar', ['class' => 'btn btn-success']) !!}
                 <a href="/categorias"><button type="button" class="btn btn-secondary">Cancelar</button></a>
